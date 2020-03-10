@@ -27,6 +27,18 @@ export default class App extends Component {
       })
     })
   }
+
+  onCompletedChange = (id) => {
+    this.setState((prevState) => {
+      return prevState.todos.map((todo, index) => {
+        if(todo.id === id){
+          todo.isCompleted = !todo.isCompleted
+        }
+        return index
+      })
+    })
+  }
+
   render() {
     return (
       <Fragment>
@@ -34,7 +46,7 @@ export default class App extends Component {
           {this.state.title}
         </TodoHeader>
         <TodoInput btnText="ADD" addTodo={this.addTodo}/>
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} onCompletedChange={this.onCompletedChange} />
         <Like/>
       </Fragment>
     )
