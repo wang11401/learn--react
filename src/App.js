@@ -50,12 +50,27 @@ export default class App extends Component {
     })
   }
 
+  handleCheckboxClick = (id) => {
+    this.setState(() => {
+      return {
+        todos: this.state.todos.map(todo => {
+          if(todo.id === id){
+            todo.isCompleted = !todo.isCompleted
+          }
+          return todo
+        })
+      }
+    })
+  }
+
   render() {
     return (
       <Fragment>
         <Header title={this.state.title} desc={this.state.desc}/>
         <TodoInput btnText={this.state.btnText}  addTodo={this.addTodo}/>
-        <TodoList todos={this.state.todos} deleteTodo={this.deleteTodo}/>
+        <TodoList todos={this.state.todos} 
+                  deleteTodo={this.deleteTodo}
+                  handleCheckboxClick={this.handleCheckboxClick}/>
       </Fragment>
     )
   }

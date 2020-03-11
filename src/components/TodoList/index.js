@@ -7,7 +7,9 @@ export default class TodoList extends Component {
     return (
       <ul>
         {this.props.todos.map(todo => {
-          return <TodoItem key={todo.id} {...todo} deleteTodo={this.props.deleteTodo}/>
+          return <TodoItem key={todo.id} {...todo} 
+          deleteTodo={this.props.deleteTodo}
+          handleCheckboxClick={this.props.handleCheckboxClick}/>
         })}
       </ul>
     )
